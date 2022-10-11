@@ -8,16 +8,25 @@
 import Photos
 
 class ImageService {
-    static func getPhotosFromLibrary(completion: @escaping([Data]) -> Void) {
-        PHPhotoLibrary.requestAuthorization { status in
+    static let shared = ImageService()
+    
+    private init() {}
+    
+    func requestPermissionAndConvertPhoto(completion: @escaping([Data]) -> Void) {
+        PHPhotoLibrary.requestAuthorization { [unowned self] status in
             if status == .authorized {
-                completion(convertPhotos())
+                completion(getPhotosFromLibrary())
             }
         }
     }
     
-    static private func convertPhotos() -> [Data] {
+    private func getPhotosFromLibrary() -> [Data] {
         let assets = PHAsset.fetchAssets(with: .image, options: nil)
+        let imageData = convertPhotos(from: assets)
+        return imageData
+    }
+    
+    private func convertPhotos(from assets: PHFetchResult<PHAsset>) -> [Data] {
         var imageData = [Data]()
         assets.enumerateObjects { (object, _, _) in
             let asset = object

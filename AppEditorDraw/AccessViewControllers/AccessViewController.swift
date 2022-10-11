@@ -8,37 +8,22 @@
 import UIKit
 
 class AccessViewController: UIViewController {
-    @IBOutlet weak var collectionView: UICollectionView!
-    
     private let viewModel = AccessViewModel()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let photosVC = segue.destination as? PhotosViewController else { return }
+        photosVC.viewModel = viewModel.passPhotosToPhotosView() as! PhotosViewModel
+    }
+    
+    @IBAction func accessButtonTapped(_ sender: UIButton) {
         getPhotosFromLibrary()
     }
     
     private func getPhotosFromLibrary() {
         viewModel.getImage { [weak self] in
             DispatchQueue.main.async {
-                self?.collectionView.reloadData()
+                self?.performSegue(withIdentifier: "showPhotos", sender: nil)
             }
         }
-    }
-}
-
-//MARK: -UICollectionViewDelegate, UICollectionViewDataSource
-extension AccessViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel.numberOfRows
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.identifier, for: indexPath) as! ImageCollectionViewCell
-        cell.viewModel = viewModel.getImageCellViewModel(at: indexPath)
-        return cell
     }
 }

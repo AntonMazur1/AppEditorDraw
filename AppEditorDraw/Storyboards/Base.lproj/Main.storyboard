@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="a7f-j4-ogM">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
@@ -10,15 +10,64 @@
     </dependencies>
     <scenes>
         <!--Access View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <scene sceneID="oJ8-Ce-Enz">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="AccessViewController" customModule="AppEditorDraw" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <viewController id="a7f-j4-ogM" customClass="AccessViewController" customModule="AppEditorDraw" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HoQ-7X-qrR">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="vc9-DS-Bjw">
+                                <rect key="frame" x="46.333333333333343" y="280.33333333333337" width="297.66666666666663" height="283.33333333333337"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="duck" translatesAutoresizingMaskIntoConstraints="NO" id="Zri-iS-8nH">
+                                        <rect key="frame" x="51.333333333333343" y="0.0" width="195" height="168.66666666666666"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allow Access Your Photos and Videos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffE-aW-pz2">
+                                        <rect key="frame" x="0.0" y="198.66666666666669" width="297.66666666666669" height="20.333333333333343"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H9Y-Hh-dBX">
+                                        <rect key="frame" x="51.333333333333343" y="249.00000000000009" width="195" height="34.333333333333343"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Allow Access"/>
+                                        <connections>
+                                            <action selector="accessButtonTapped:" destination="a7f-j4-ogM" eventType="touchUpInside" id="aF2-cM-Pf2"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="oqT-ws-S8a"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Zri-iS-8nH" firstAttribute="height" secondItem="HoQ-7X-qrR" secondAttribute="height" multiplier="0.2" id="5hj-43-hY8"/>
+                            <constraint firstItem="vc9-DS-Bjw" firstAttribute="centerX" secondItem="HoQ-7X-qrR" secondAttribute="centerX" id="5zR-r0-NWg"/>
+                            <constraint firstItem="H9Y-Hh-dBX" firstAttribute="width" secondItem="HoQ-7X-qrR" secondAttribute="width" multiplier="0.5" id="E6n-qU-G95"/>
+                            <constraint firstItem="Zri-iS-8nH" firstAttribute="width" secondItem="HoQ-7X-qrR" secondAttribute="width" multiplier="0.5" id="Ps6-tp-OwZ"/>
+                            <constraint firstItem="vc9-DS-Bjw" firstAttribute="centerY" secondItem="HoQ-7X-qrR" secondAttribute="centerY" id="vtL-Xy-z6y"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="showPhotos" id="pfy-OK-gNj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7TR-jx-Pc9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-815" y="-2"/>
+        </scene>
+        <!--Photos View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="PhotosViewController" customModule="AppEditorDraw" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jxH-Av-ld0">
-                                <rect key="frame" x="0.0" y="47" width="390" height="763"/>
+                                <rect key="frame" x="0.0" y="47" width="390" height="740"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="3" minimumInteritemSpacing="0.0" id="yWM-0W-XlZ">
                                     <size key="itemSize" width="128" height="128"/>
@@ -65,9 +114,7 @@
                             <constraint firstItem="jxH-Av-ld0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xEY-uZ-EZr"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="collectionView" destination="jxH-Av-ld0" id="R7X-t5-x8K"/>
-                    </connections>
+                    <navigationItem key="navigationItem" id="Ihw-uq-WHH"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -75,6 +122,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="duck" width="466" height="420"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
