@@ -9,17 +9,13 @@ import Foundation
 
 protocol ImageCollectionViewCellViewModelProtocol {
     var libraryImage: Data { get }
-    init(image: Data)
+    init(libraryImage: Data)
 }
 
 class ImageCollectionViewCellViewModel: ImageCollectionViewCellViewModelProtocol {
-    private let image: Data
+    var libraryImage: Data
     
-    var libraryImage: Data {
-        image
-    }
-    
-    required init(image: Data) {
-        self.image = image
+    required init(libraryImage: Data) {
+        self.libraryImage = libraryImage
     }
 }

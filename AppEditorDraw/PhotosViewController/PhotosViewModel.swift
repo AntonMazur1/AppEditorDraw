@@ -11,6 +11,7 @@ protocol PhotosViewModelProtocol {
     var numberOfRows: Int { get }
     init(libraryImages: [Data]?)
     func getImageCellViewModel(at indexPath: IndexPath) -> ImageCollectionViewCellViewModelProtocol?
+    func getImageForEdit(at indexPath: IndexPath) -> DrawingViewModelProtocol?
 }
 
 class PhotosViewModel: PhotosViewModelProtocol {
@@ -20,12 +21,17 @@ class PhotosViewModel: PhotosViewModelProtocol {
         libraryImages?.count ?? 0
     }
     
-    required init(libraryImages: [Data]? = nil) {
+    required init(libraryImages: [Data]?) {
         self.libraryImages = libraryImages
     }
     
     func getImageCellViewModel(at indexPath: IndexPath) -> ImageCollectionViewCellViewModelProtocol? {
         guard let image = libraryImages?[indexPath.row] else { return nil }
-        return ImageCollectionViewCellViewModel(image: image)
+        return ImageCollectionViewCellViewModel(libraryImage: image)
+    }
+    
+    func getImageForEdit(at indexPath: IndexPath) -> DrawingViewModelProtocol? {
+        guard let image = libraryImages?[indexPath.row] else { return nil }
+        return DrawingViewModel(imageForMarkUp: image)
     }
 }

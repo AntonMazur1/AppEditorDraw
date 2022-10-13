@@ -61,13 +61,13 @@
         <!--Photos View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="PhotosViewController" customModule="AppEditorDraw" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="PhotosViewController" customModule="AppEditorDraw" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jxH-Av-ld0">
-                                <rect key="frame" x="0.0" y="47" width="390" height="740"/>
+                                <rect key="frame" x="0.0" y="47" width="390" height="763"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="3" minimumInteritemSpacing="0.0" id="yWM-0W-XlZ">
                                     <size key="itemSize" width="128" height="128"/>
@@ -115,10 +115,44 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ihw-uq-WHH"/>
+                    <connections>
+                        <segue destination="NvJ-3t-yHA" kind="show" identifier="showEditor" id="cbA-Qw-f3w"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="47.692307692307693" y="-2.1327014218009479"/>
+        </scene>
+        <!--Drawing View Controller-->
+        <scene sceneID="vqy-He-tqE">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="NvJ-3t-yHA" customClass="DrawingViewController" customModule="AppEditorDraw" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kxf-eV-MtF">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xgk-GQ-TjZ" customClass="PKCanvasView">
+                                <rect key="frame" x="0.0" y="47" width="390" height="763"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="YkF-HM-SbT"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="YkF-HM-SbT" firstAttribute="bottom" secondItem="xgk-GQ-TjZ" secondAttribute="bottom" id="YhD-kf-HKw"/>
+                            <constraint firstItem="xgk-GQ-TjZ" firstAttribute="top" secondItem="YkF-HM-SbT" secondAttribute="top" id="Zpj-tS-jsM"/>
+                            <constraint firstItem="YkF-HM-SbT" firstAttribute="trailing" secondItem="xgk-GQ-TjZ" secondAttribute="trailing" id="dAs-1F-0rT"/>
+                            <constraint firstItem="xgk-GQ-TjZ" firstAttribute="leading" secondItem="YkF-HM-SbT" secondAttribute="leading" id="yBO-tP-NCO"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Dgv-4K-fPJ"/>
+                    <connections>
+                        <outlet property="drawingView" destination="xgk-GQ-TjZ" id="ieE-fz-R2U"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TeR-Ps-fB6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="997" y="-2"/>
         </scene>
     </scenes>
     <resources>

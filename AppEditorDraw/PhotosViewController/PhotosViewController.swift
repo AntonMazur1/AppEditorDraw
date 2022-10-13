@@ -9,6 +9,11 @@ import UIKit
 
 class PhotosViewController: UIViewController {
     var viewModel: PhotosViewModelProtocol!
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let drawingVC = segue.destination as? DrawingViewController else { return }
+        drawingVC.viewModel = sender as! DrawingViewModel
+    }
 }
 
 //MARK: -UICollectionViewDelegate, UICollectionViewDataSource
@@ -19,6 +24,11 @@ extension PhotosViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.numberOfRows
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let drawingViewModel = viewModel.getImageForEdit(at: indexPath)
+        performSegue(withIdentifier: "showEditor", sender: drawingViewModel)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

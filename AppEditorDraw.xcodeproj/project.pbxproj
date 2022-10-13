@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8946E41328F8221200B019A9 /* DrawingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8946E41228F8221200B019A9 /* DrawingViewModel.swift */; };
+		8952F5B328F8031F003EBE98 /* DrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8952F5B228F8031F003EBE98 /* DrawingViewController.swift */; };
 		89D99ED228F441A1009ABBF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D99ED128F441A1009ABBF0 /* AppDelegate.swift */; };
 		89D99ED428F441A1009ABBF0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D99ED328F441A1009ABBF0 /* SceneDelegate.swift */; };
 		89D99ED628F441A1009ABBF0 /* AccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D99ED528F441A1009ABBF0 /* AccessViewController.swift */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8946E41228F8221200B019A9 /* DrawingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingViewModel.swift; sourceTree = "<group>"; };
+		8952F5B228F8031F003EBE98 /* DrawingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingViewController.swift; sourceTree = "<group>"; };
 		89D99ECE28F441A1009ABBF0 /* AppEditorDraw.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppEditorDraw.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89D99ED128F441A1009ABBF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		89D99ED328F441A1009ABBF0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +53,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8946E41428F822EE00B019A9 /* DrawingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8952F5B228F8031F003EBE98 /* DrawingViewController.swift */,
+				8946E41228F8221200B019A9 /* DrawingViewModel.swift */,
+			);
+			path = DrawingViewController;
+			sourceTree = "<group>";
+		};
 		89D99EC528F441A1009ABBF0 = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +84,7 @@
 				89D99EE728F441C9009ABBF0 /* Application */,
 				89D99EE828F441D3009ABBF0 /* AccessViewControllers */,
 				89D99EFB28F58AC7009ABBF0 /* PhotosViewController */,
+				8946E41428F822EE00B019A9 /* DrawingViewController */,
 				89D99EE528F441B4009ABBF0 /* Storyboards */,
 				89D99EE628F441BD009ABBF0 /* Resources */,
 				89D99EF228F5695C009ABBF0 /* Services */,
@@ -219,8 +233,10 @@
 				89D99EEA28F44CB4009ABBF0 /* ImageCollectionViewCell.swift in Sources */,
 				89D99EF128F455A0009ABBF0 /* ImageCollectionViewCellViewModel.swift in Sources */,
 				89D99EED28F45182009ABBF0 /* ImageService.swift in Sources */,
+				8946E41328F8221200B019A9 /* DrawingViewModel.swift in Sources */,
 				89D99EFA28F58AAC009ABBF0 /* PhotosViewModel.swift in Sources */,
 				89D99ED428F441A1009ABBF0 /* SceneDelegate.swift in Sources */,
+				8952F5B328F8031F003EBE98 /* DrawingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
