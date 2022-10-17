@@ -9,15 +9,15 @@ import PencilKit
 import UIKit
 
 class DrawingViewController: UIViewController {
-    let toolPicker = PKToolPicker()
-    
-    var viewModel: DrawingViewModelProtocol!
-    
     @IBOutlet weak var drawingView: PKCanvasView!
+    @IBOutlet weak var drawingImageView: UIImageView!
+    
+    private let toolPicker = PKToolPicker()
+    var viewModel: DrawingViewModelProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        drawingView.insertSubview(canvasImageView, at: 1)
+        setupImageAndImageView()
         drawingView.delegate = self
         drawingView.drawingPolicy = .anyInput
     }
@@ -27,30 +27,29 @@ class DrawingViewController: UIViewController {
         setupDrawingView()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-    }
-    
     private func setupDrawingView() {
+        toolPicker.overrideUserInterfaceStyle = .dark
         toolPicker.setVisible(true, forFirstResponder: drawingView)
         toolPicker.addObserver(drawingView)
+        drawingView.isOpaque = false
+        drawingView.backgroundColor = .clear
         drawingView.becomeFirstResponder()
+    }
+    
+    private func setupImageAndImageView() {
+        if let image = UIImage(data: viewModel.imageForMarkUp) {
+            let imageView = UIImageView(image: image)
+            imageView.clipsToBounds = true
+            imageView.frame = drawingView.bounds
+            imageView.contentMode = .scaleAspectFill
+            let subView = drawingView.subviews[0]
+            subView.addSubview(imageView)
+            subView.sendSubviewToBack(imageView)
+        }
     }
 }
 
-//MARK: -PKCanvasViewDelegate
+//MARK: - PKCanvasViewDelegate
 extension DrawingViewController: PKCanvasViewDelegate {
-    func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
-        
-    }
-    func canvasViewDidFinishRendering(_ canvasView: PKCanvasView) {
-        
-    }
-    func canvasViewDidBeginUsingTool(_ canvasView: PKCanvasView) {
-        
-    }
-    func canvasViewDidEndUsingTool(_ canvasView: PKCanvasView) {
-        
-    }
+
 }

@@ -28,13 +28,18 @@ class ImageService {
     
     private func convertPhotos(from assets: PHFetchResult<PHAsset>) -> [Data] {
         var imageData = [Data]()
+        
         assets.enumerateObjects { (object, _, _) in
             let asset = object
             let manager = PHImageManager.default()
-            manager.requestImage(for: asset, targetSize: CGSize(width: 100, height: 100), contentMode: .aspectFit, options: nil) { image, _ in
+            let options = PHImageRequestOptions()
+            options.isSynchronous = true
+            options.deliveryMode = PHImageRequestOptionsDeliveryMode.highQualityFormat
+            manager.requestImage(for: asset, targetSize: CGSize(width: 480, height: 640), contentMode: .aspectFit, options: options) { image, _ in
                 imageData.append(image?.pngData() ?? Data())
             }
         }
+        
         return imageData
     }
 }
