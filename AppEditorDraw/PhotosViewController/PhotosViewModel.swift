@@ -32,6 +32,6 @@ class PhotosViewModel: PhotosViewModelProtocol {
     
     func getImageForEdit(at indexPath: IndexPath) -> DrawingViewModelProtocol? {
         guard let image = libraryImages?[indexPath.row] else { return nil }
-        return DrawingViewModel(imageForMarkUp: image)
+        return DrawingViewModel(imageForMarkUp: image, libraryImage: libraryImages ?? [], imageIndex: indexPath.row)
     }
 }

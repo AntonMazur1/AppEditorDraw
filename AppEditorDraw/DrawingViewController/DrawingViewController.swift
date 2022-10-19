@@ -27,6 +27,37 @@ class DrawingViewController: UIViewController {
         setupDrawingView()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let photosVC = segue.destination as? PhotosViewController
+        photosVC?.viewModel = sender as! PhotosViewModel
+        photosVC?.imageCollectionView.reloadData()
+    }
+    
+    @IBAction func saveEditedImageTapped(_ sender: Any) {
+        saveImage()
+    }
+    
+    private func saveImage() {
+        let generatedImage = generateImageFromCanvas()
+        
+        if let image = generatedImage?.pngData() {
+            viewModel.saveEdited(image: image) { [weak self] in
+                let photosViewModel = self?.viewModel.createPhotosViewModel(with: image)
+                self?.performSegue(withIdentifier: "backToPhotos", sender: photosViewModel)
+            }
+        }
+    }
+    
+    private func generateImageFromCanvas() -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(drawingView.bounds.size, false, 1)
+        
+        drawingView.drawHierarchy(in: CGRect(origin: .zero, size: drawingView.bounds.size), afterScreenUpdates: true)
+        let generatedImage = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        return generatedImage
+    }
+    
     private func setupDrawingView() {
         toolPicker.overrideUserInterfaceStyle = .dark
         toolPicker.setVisible(true, forFirstResponder: drawingView)

@@ -58,7 +58,7 @@
             </objects>
             <point key="canvasLocation" x="956.92307692307691" y="-2.1327014218009479"/>
         </scene>
-        <!--Pick Photo-->
+        <!--Photos View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="PhotosViewController" modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="PhotosViewController" customModule="AppEditorDraw" customModuleProvider="target" sceneMemberID="viewController">
@@ -114,8 +114,9 @@
                             <constraint firstItem="jxH-Av-ld0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xEY-uZ-EZr"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Pick Photo" id="Ihw-uq-WHH"/>
+                    <navigationItem key="navigationItem" id="Ihw-uq-WHH"/>
                     <connections>
+                        <outlet property="imageCollectionView" destination="jxH-Av-ld0" id="bB2-J7-Mdt"/>
                         <segue destination="NvJ-3t-yHA" kind="show" identifier="showEditor" id="cbA-Qw-f3w"/>
                     </connections>
                 </viewController>
@@ -145,12 +146,20 @@
                             <constraint firstItem="xgk-GQ-TjZ" firstAttribute="leading" secondItem="YkF-HM-SbT" secondAttribute="leading" id="yBO-tP-NCO"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Dgv-4K-fPJ"/>
+                    <navigationItem key="navigationItem" id="Dgv-4K-fPJ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="eMt-VR-Eur">
+                            <connections>
+                                <action selector="saveEditedImage:" destination="NvJ-3t-yHA" id="oCJ-Du-qu9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="drawingView" destination="xgk-GQ-TjZ" id="ieE-fz-R2U"/>
+                        <segue destination="8am-Se-4eP" kind="unwind" identifier="backToPhotos" unwindAction="unwindSegue:" id="o6K-22-tGz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TeR-Ps-fB6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="8am-Se-4eP" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2855.3846153846152" y="-2.1327014218009479"/>
         </scene>

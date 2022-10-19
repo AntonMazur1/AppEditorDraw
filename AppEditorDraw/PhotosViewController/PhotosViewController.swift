@@ -8,15 +8,20 @@
 import UIKit
 
 class PhotosViewController: UIViewController {
+    @IBOutlet weak var imageCollectionView: UICollectionView!
     var viewModel: PhotosViewModelProtocol!
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let drawingVC = segue.destination as? DrawingViewController else { return }
         drawingVC.viewModel = sender as! DrawingViewModel
     }
+    
+    @IBAction func unwindSegue(_ seg: UIStoryboardSegue) {
+        
+    }
 }
 
-//MARK: -UICollectionViewDelegate, UICollectionViewDataSource
+//MARK: - UICollectionViewDelegate, UICollectionViewDataSource
 extension PhotosViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         1
