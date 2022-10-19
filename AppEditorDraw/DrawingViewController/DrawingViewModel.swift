@@ -13,16 +13,17 @@ protocol DrawingViewModelProtocol {
     var imageIndex: Int { get }
     func saveEdited(image: Data, completion: @escaping() -> ())
     func createPhotosViewModel(with image: Data) -> PhotosViewModelProtocol?
-    init(imageForMarkUp: Data, libraryImage: [Data], imageIndex: Int)
+    init(libraryImage: [Data], imageIndex: Int)
 }
 
 class DrawingViewModel: DrawingViewModelProtocol {
-    var imageForMarkUp: Data
+    var imageForMarkUp: Data {
+        libraryImage[imageIndex]
+    }
     var libraryImage: [Data]
     var imageIndex: Int
     
-    required init(imageForMarkUp: Data, libraryImage: [Data], imageIndex: Int) {
-        self.imageForMarkUp = imageForMarkUp
+    required init(libraryImage: [Data], imageIndex: Int) {
         self.libraryImage = libraryImage
         self.imageIndex = imageIndex
     }

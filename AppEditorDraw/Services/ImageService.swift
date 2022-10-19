@@ -35,7 +35,7 @@ class ImageService {
             let options = PHImageRequestOptions()
             options.isSynchronous = true
             options.deliveryMode = PHImageRequestOptionsDeliveryMode.highQualityFormat
-            manager.requestImage(for: asset, targetSize: CGSize(width: 480, height: 640), contentMode: .aspectFit, options: options) { image, _ in
+            manager.requestImage(for: asset, targetSize: CGSize(width: 1080, height: 1920), contentMode: .aspectFit, options: options) { image, _ in
                 imageData.append(image?.pngData() ?? Data())
             }
         }

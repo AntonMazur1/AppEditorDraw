@@ -149,7 +149,7 @@
                     <navigationItem key="navigationItem" id="Dgv-4K-fPJ">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="eMt-VR-Eur">
                             <connections>
-                                <action selector="saveEditedImage:" destination="NvJ-3t-yHA" id="oCJ-Du-qu9"/>
+                                <action selector="saveEditedImageTapped:" destination="NvJ-3t-yHA" id="D6B-Yw-y7O"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
